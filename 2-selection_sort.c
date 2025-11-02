@@ -17,34 +17,30 @@ void selection_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	/* Outer loop: iterates through the array to place elements */
+	/* Outer loop: one for each element to be placed correctly */
 	for (i = 0; i < size - 1; i++)
 	{
-		/* Assume the current element is the minimum */
+		/* Find the index of the minimum element in the unsorted part */
 		min_idx = i;
-
-		/* Inner loop: find the index of the actual minimum element */
 		for (j = i + 1; j < size; j++)
 		{
 			if (array[j] < array[min_idx])
-			{
 				min_idx = j;
-			}
 		}
 
 		/*
-		 * If the minimum element was found at an index
-		 * different from i, then swap them.
+		 * If the minimum element is not already at its
+		 * correct position (i), swap them.
 		 */
 		if (min_idx != i)
 		{
-			/* Swap the elements */
 			temp = array[i];
 			array[i] = array[min_idx];
 			array[min_idx] = temp;
 
-			/* Print array after swap */
+			/* Print the array after the swap */
 			print_array(array, size);
 		}
 	}
 }
+
